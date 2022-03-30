@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
         this.button.setOnClickListener(){
             if(letter.text.length == 1) {
                 if (jogo.startGame(letter.text.first().toString())) {
-                    Toast.makeText(this@MainActivity, "Parabens!! voce acertou a letter ", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, "Parabéns!, a palavra contém a letra  ", Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(this@MainActivity, "Voce errou a letter ", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, "Infelizmente a letra não existe na palavra", Toast.LENGTH_LONG).show()
                 }
 
                 if (jogo.done(letter.text.toString())) {
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
                 this.layout.text = jogo.layout.toString()
             }else{
-                Toast.makeText(this@MainActivity, "Digite uma unica letter por vez!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity, "Você já Digitou uma letra! Digite uma letra por vez na jogada!", Toast.LENGTH_LONG).show()
             }
         }
 
