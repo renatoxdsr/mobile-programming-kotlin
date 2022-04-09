@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var layout: TextView
     private lateinit var button: Button
     private lateinit var imagesBank: imagesBank
+    private lateinit var img: ImageView
     private lateinit var usedWords: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         this.tip = findViewById(R.id.tvtip)
         this.letter = findViewById(R.id.tvletter)
-        this.button = findViewById(R.id.button);
+        this.usedWords = findViewById(R.id.usedWords)
+        this.button = findViewById(R.id.button)
         this.layout = findViewById(R.id.Tvlayout)
         this.img = findViewById(R.id.imageView)
 
@@ -41,17 +43,22 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "Infelizmente a letra não existe na palavra", Toast.LENGTH_LONG).show()
                 }
 
+                this.img.setImageResource(this.imagesBank.loadingImg(jogo.attempt));
+                
                 if (jogo.done(letter.text.toString())) {
                     Thread.sleep(2000)
                     this.start()
+                    this.img.setImageResource(this.imagesBank.loadingImg(jogo.attempt));
+                    this.result(jogo.message)
                 }
 
                 this.layout.text = jogo.layout.toString()
+                this.layout.text = jogo.getUsedWords()
+                this.usedWords.text = jogo.usedWords.toString()
             }else{
                 Toast.makeText(this@MainActivity, "Você já Digitou uma letra! Digite uma letra por vez na jogada!", Toast.LENGTH_LONG).show()
             }
         }
-
     }
 
     fun start(){
@@ -64,5 +71,11 @@ class MainActivity : AppCompatActivity() {
         this.layout.text = jogo.layout.toString()
         this.usedWords.text = jogo.usedWords.toString()
         this.img.setImageResource(this.imagesBank.loadingImg(jogo.attempt);
+    }
+
+    fun result(result: String){
+        val pageResult = Intent(this, ResultadoActivity::class.java)
+        pageResult.putExtra("result", result)
+        startActivity(pageResult)
     }
 }

@@ -5,7 +5,7 @@ class Forca (var word: String, var tip: String) {
     var attempt: Int
     var hint: Int
     val layout = arrayListOf<String>()
-    lateinit var menssagem: String
+    lateinit var message: String
 
     init {
         this.attempt = 6
@@ -18,20 +18,19 @@ class Forca (var word: String, var tip: String) {
 
 
     fun startGame(letter: String): Boolean{
-        // verificar se o jogo está ativo
-        // informar que o jogo já encerrou
+        // verificar se o jogo tem começado
+        // informar que o jogo terminou
         if(this.done(letter)){
             return false;
         }
 
-        // verificar se a letter é "nova", ou seja, não informada anteriormente
-        // registrar a letter no banco de letters jogadas
+        // verificar se a letter é uma letra nova, ou seja, não inserida no jogo antes
+        // registrar a letter no banco de letters(letras) jogadas na rodada
         if(!verifyLetter(letter.toUpperCase())){
             return false;
         }
-        // verificar se faz parte da word secreta
-        // atualizar o layout
-        // registrar pontuação
+        // verificar se faz parte da unrevealedword (palavra não revelada)
+        // registrar/atualizar a pontuação, como também layout do jogo
 
         if(this.word.toUpperCase().contains(letter.toUpperCase())){
             updateLayout(letter)
@@ -48,11 +47,11 @@ class Forca (var word: String, var tip: String) {
     private fun verifyLetter(letter: String): Boolean{
 
         if(letter.length > 1){
-            print("Você precisa digitar um caracter!!\n")
+            print("Você precisa digitar uma letra!!\n")
             this.attempt = this.attempt - 1;
             return false
         }else if(this.usedWords.contains(letter)){
-            // informar que a tentativa não é válida
+            //retornar se a tentativa foi validada ou não
             print("A letra já selecionada anteriormente!\n")
             return false;
         }
@@ -62,16 +61,16 @@ class Forca (var word: String, var tip: String) {
 
     fun done(letter: String):Boolean {
         if(letter.uppercase() == this.word.uppercase()){
-            this.menssagem = "Parabéns você acertou a word"
+            this.message = "Parabéns você acertou uma letra da palavra"
             return true
         }else if(this.word == null){
-            this.menssagem = "Jogo não foi iniciado corretamente"
+            this.message = "Jogo não foi iniciado corretamente"
             return true;
         } else if(this.hint == this.word.length){
-            this.menssagem ="word: " + this.word + "\n" + "Parabéns você ganhou!!"
+            this.message ="word: " + this.word + "\n" + "Parabéns você consegui desvendar a palavra!!"
             return true;
         }else if(this.attempt == 0){
-            this.menssagem ="Fim de Jogo, você alcançou o limite de attempt!!"
+            this.message ="Fim de Jogo. Infelizmente você alcançou o limite de tentativas possíveis. Reinicie o jogo!!"
             return true;
         };
         return false;
@@ -85,6 +84,15 @@ class Forca (var word: String, var tip: String) {
             }
         }
 
+    }
+
+    public fun getUsedWords():String{
+        var unrevealedWord = "";
+        this.layout.forEach {it
+            unrevealedWord +=  it;
+        }
+        System.out.println(unrevealedWord)
+        return unrevealedWord
     }
 
 }
