@@ -7,7 +7,7 @@
     tools:context=".ResultadoActivity">
 
     <TextView
-        android:id="@+id/tvMensagem"
+        android:id="@+id/tvMensage"
         android:layout_width="wrap_content"
         android:layout_height="60px"
         android:layout_marginTop="272dp"
@@ -18,17 +18,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/tvSair"
+        android:id="@+id/tvexitGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sair"
+        android:text="exitGame"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvJogar"
+        app:layout_constraintEnd_toStartOf="@+id/tvstartGame"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/tvJogar"
+        android:id="@+id/tvstartGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="72dp"

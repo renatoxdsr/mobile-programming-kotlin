@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvMensagem"
+        android:id="@+id/tvMensage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="272dp"
@@ -17,20 +17,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/tvSair"
+        android:id="@+id/tvexitGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sair"
-        app:layout_constraintEnd_toStartOf="@+id/tvJogar"
+        android:text="Sair do Jogo"
+        app:layout_constraintEnd_toStartOf="@+id/tvstartGame"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="336dp" />
 
     <Button
-        android:id="@+id/tvJogar"
+        android:id="@+id/tvstartGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
-        android:text="Novo jogo"
+        android:layout_marginEnd="70dp"
+        android:text="Jogo novo"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="336dp" />
 
